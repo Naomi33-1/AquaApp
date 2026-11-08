@@ -1,0 +1,27 @@
+name: AquaApp Version Bump
+
+on:
+  push:
+    branches: [ 'release/**' ]
+
+permissions:
+  contents: write
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Bump versionCode and versionName
+      run: bash scripts/bump_version.sh app/build.gradle.kts
+
+    - name: Commit and push
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git add app/build.gradle.kts
+        git commit -m "chore: bump version [skip ci]"
+        git push

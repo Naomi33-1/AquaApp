@@ -1,0 +1,15 @@
+default_platform(:android)
+
+platform :android do
+  desc "Deploy to Firebase App Distribution"
+  lane :distribute do
+    firebase_app_distribution(
+      app: "1:724274072903:android:46335689c31c63e13bd062",
+      service_credentials_json_data: ENV["FIREBASE_SERVICE_ACCOUNT"], # Секрет из GitHub
+      android_artifact_type: "APK",
+      android_artifact_path: "app/build/outputs/apk/release/app-release.apk",
+      groups: "qa-team",
+      release_notes: "AquaApp: сборка из GitHub Actions, коммит #{ENV['GITHUB_SHA']}"
+    )
+  end
+end

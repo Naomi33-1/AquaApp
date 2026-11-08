@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AquaApp</string>
+    <string name="subtitle">Список дел</string>
+    <string name="new_task_hint">Новая задача</string>
+    <string name="empty_hint">Добавь первую задачу, чтобы начать</string>
+    <string name="footer">Версия %1$s · %2$s</string>
+</resources>
